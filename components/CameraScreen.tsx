@@ -15,6 +15,7 @@ import { CameraView } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 import { MaterialIcons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
+import CameraControls from './camera/CameraControls';
 
 export default function CameraScreen() {
   const [hasCameraPermission, setHasCameraPermission] = useState<
@@ -240,30 +241,12 @@ export default function CameraScreen() {
               </Animated.View>
 
               {isImageSelected && (
-                <View style={styles.imageControlsContainer}>
-                  <View style={styles.controlRow}>
-                    <TouchableOpacity
-                      style={styles.controlButton}
-                      onPress={decreaseTattooSize}
-                    >
-                      <MaterialIcons name="remove" size={24} color="white" />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                      style={styles.controlButton}
-                      onPress={increaseTattooSize}
-                    >
-                      <MaterialIcons name="add" size={24} color="white" />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                      style={[styles.controlButton, styles.deleteButton]}
-                      onPress={deleteTattoo}
-                    >
-                      <MaterialIcons name="delete" size={24} color="white" />
-                    </TouchableOpacity>
-                  </View>
-                </View>
+                <CameraControls
+                  styles={styles}
+                  decreaseTattooSize={decreaseTattooSize}
+                  increaseTattooSize={increaseTattooSize}
+                  deleteTattoo={deleteTattoo}
+                />
               )}
             </>
           )}
