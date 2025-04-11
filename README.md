@@ -1,50 +1,114 @@
-# Welcome to your Expo app 👋
+# DoesThisTattooLookGoodOnMe?
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+An AR-powered mobile application that helps users visualize how tattoo designs would look on their body before getting inked.
 
-## Get started
+## Project Overview
 
-1. Install dependencies
+DoesThisTattooLookGoodOnMe? is a React Native application that uses augmented reality and AI to intelligently place tattoo designs on a user's body in real-time. The app functions similarly to an Instagram filter, allowing users to see how a specific tattoo design would look on their body from different angles and in different lighting conditions.
 
-   ```bash
+## Core Features
+
+- Real-time AR tattoo visualization on body parts
+- Smart AI-powered placement of tattoo designs
+- Upload custom tattoo designs (PNG format)
+- Adjustable sizing, rotation, and positioning
+- Save and share visualization results
+- Browse catalog of tattoo designs
+- User profiles for both tattoo enthusiasts and artists
+
+## Tech Stack
+
+### Frontend
+
+- React Native (cross-platform mobile framework)
+- Expo (development platform)
+- ViroReact (AR framework for React Native)
+- React Navigation (navigation library)
+
+### AR/AI Technologies
+
+- ARKit (iOS) and ARCore (Android) for AR capabilities
+- TensorFlow.js for on-device AI models
+- Computer vision for body part detection and tracking
+
+### Backend
+
+- Node.js with Express for API server
+- MongoDB for database
+- Firebase for authentication and real-time features
+- AWS S3 for tattoo design storage
+
+## Setup Instructions
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+- Expo CLI
+- iOS/Android development environment
+
+### Installation
+
+1. Clone the repository
+
+   ```
+   git clone https://github.com/yourusername/does-this-tattoo-look-good-on-me.git
+   cd does-this-tattoo-look-good-on-me
+   ```
+
+2. Install dependencies
+
+   ```
    npm install
+   # or
+   yarn install
    ```
 
-2. Start the app
+3. Start the development server
 
-   ```bash
-    npx expo start
+   ```
+   npm start
+   # or
+   yarn start
    ```
 
-In the output, you'll find options to open the app in a
+4. Run on device or emulator
+   - Scan the QR code with the Expo Go app
+   - Press 'a' for Android emulator
+   - Press 'i' for iOS simulator
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Development Roadmap
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1. **MVP (Minimum Viable Product)**
 
-## Get a fresh project
+   - Basic camera functionality
+   - Simple AR overlay of tattoo designs
+   - Limited body part detection
+   - Small library of test designs
 
-When you're ready, run:
+2. **Enhanced Features**
 
-```bash
-npm run reset-project
-```
+   - Advanced body mapping
+   - Realistic tattoo rendering with skin tone adaptation
+   - User accounts and saved designs
+   - Social sharing
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+3. **Pro Features**
+   - Artist collaboration platform
+   - Custom design upload
+   - Advanced editing tools
+   - Analytics for tattoo artists
 
-## Learn more
+## Contributing
 
-To learn more about developing your project with Expo, look at the following resources:
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## License
 
-## Join the community
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-Join our community of developers creating universal apps.
+## Acknowledgements
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- ARKit and ARCore for AR capabilities
+- TensorFlow.js for AI models
+- All open source libraries used in this project
