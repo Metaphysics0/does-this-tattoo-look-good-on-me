@@ -16,6 +16,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { MaterialIcons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import CameraControls from './camera/CameraControls';
+import ARTattooView from './ar/ARTattooView';
 
 export default function CameraScreen() {
   const [hasCameraPermission, setHasCameraPermission] = useState<
@@ -27,6 +28,7 @@ export default function CameraScreen() {
   const [imageScale, setImageScale] = useState(1);
   const [lastDistance, setLastDistance] = useState(0);
   const [isImageSelected, setIsImageSelected] = useState(false);
+  const [useARMode, setUseARMode] = useState(false);
   const cameraRef = useRef<any>(null);
   const pan = useRef(new Animated.ValueXY()).current;
 
@@ -190,6 +192,19 @@ export default function CameraScreen() {
     setImageScale(1);
   };
 
+  const toggleARMode = () => {
+    if (selectedImage) {
+      setUseARMode(!useARMode);
+    } else {
+      // Show a message or notification that a tattoo needs to be selected first
+      alert('Please select a tattoo image first');
+    }
+  };
+
+  const closeARMode = () => {
+    setUseARMode(false);
+  };
+
   if (hasCameraPermission === null) {
     return (
       <View style={styles.container}>
@@ -207,6 +222,11 @@ export default function CameraScreen() {
         </Text>
       </View>
     );
+  }
+
+  // If AR mode is active and we have a selected image, render the AR view
+  if (useARMode && selectedImage) {
+    return <ARTattooView tattooUri={selectedImage} onClose={closeARMode} />;
   }
 
   return (
@@ -262,9 +282,14 @@ export default function CameraScreen() {
               <MaterialIcons name="flip-camera-ios" size={32} color="white" />
             </TouchableOpacity>
             {selectedImage && (
-              <TouchableOpacity style={styles.button} onPress={resetTattoo}>
-                <MaterialIcons name="refresh" size={32} color="white" />
-              </TouchableOpacity>
+              <>
+                <TouchableOpacity style={styles.button} onPress={resetTattoo}>
+                  <MaterialIcons name="refresh" size={32} color="white" />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={toggleARMode}>
+                  <MaterialIcons name="3d-rotation" size={32} color="white" />
+                </TouchableOpacity>
+              </>
             )}
           </View>
         </CameraView>
@@ -275,6 +300,9 @@ export default function CameraScreen() {
           <Text style={styles.instructionText}>• Drag to move the tattoo</Text>
           <Text style={styles.instructionText}>
             • Pinch to resize the tattoo
+          </Text>
+          <Text style={styles.instructionText}>
+            • Tap 3D button for AR experience
           </Text>
         </View>
       )}
